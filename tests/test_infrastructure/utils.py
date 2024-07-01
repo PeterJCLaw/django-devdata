@@ -2,11 +2,15 @@ from __future__ import annotations
 
 import os
 import subprocess
+from typing import Any
 
 from django.conf import settings
 
 
-def run_command(*command, **kwargs):
+def run_command(
+    *command: str,
+    **kwargs: Any,
+) -> subprocess.CompletedProcess[bytes]:
     return subprocess.run(
         ["testsite/manage.py", *command],
         cwd="tests",
@@ -23,5 +27,7 @@ def run_command(*command, **kwargs):
     )
 
 
-def assert_ran_successfully(process: subprocess.Popen[bytes]) -> None:
+def assert_ran_successfully(
+    process: subprocess.CompletedProcess[bytes],
+) -> None:
     assert process.returncode == 0, process.stderr.decode("utf-8")  # type: ignore[union-attr]
