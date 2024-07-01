@@ -355,7 +355,7 @@ class FactoryStrategy(Strategy):
     related) models.
     """
 
-    def __init__(self, *args, factories, **kwargs):
+    def __init__(self, *args, factories, **kwargs):  # type: ignore[no-untyped-def]
         super().__init__(*args, **kwargs)
         self.factories = factories
 

@@ -23,7 +23,7 @@ ExportedData = Dict[
         # migrations.json
         List[Dict[str, str]],
         # model -> strategy -> list[TestObject]
-        Dict[str, list[TestObject]],
+        Dict[str, List[TestObject]],
     ],
 ]
 

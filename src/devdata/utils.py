@@ -185,7 +185,7 @@ def disable_migrations() -> Iterator[None]:
     django_settings.MIGRATION_MODULES = original_migration_modules
 
 
-def nodb_cursor(connection):
+def nodb_cursor(connection):  # type: ignore[no-untyped-def]
     if django.VERSION < (3, 1):
         return connection._nodb_connection.cursor()
     else:
